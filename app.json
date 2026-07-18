@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Concordancia: Estación 0",
+    "slug": "concordancia-estacion-0",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "concordancia",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
