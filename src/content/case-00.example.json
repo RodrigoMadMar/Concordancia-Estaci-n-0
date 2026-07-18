@@ -1,0 +1,285 @@
+{
+  "id": "case-00",
+  "code": "07-14-C",
+  "title": "El pasajero de las 07:14",
+  "initialTitle": "Inconsistencia residencial",
+  "fatigue": "D2",
+  "initialDrift": "00:00",
+  "objectives": [
+    {
+      "id": "obj-review",
+      "text": "Verifique si existe evidencia independiente del testimonio de Ena.",
+      "completionCondition": {
+        "type": "observationUnlocked",
+        "id": "obs-second-resident"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e-01",
+      "code": "E-01",
+      "title": "Declaración de Ena",
+      "type": "document",
+      "source": "Entrevista de campo",
+      "claims": [
+        {
+          "id": "claim-memory-marriage",
+          "evidenceId": "e-01",
+          "text": "Ena recuerda veinte años de matrimonio con Toma.",
+          "category": "memory"
+        },
+        {
+          "id": "claim-memory-train",
+          "evidenceId": "e-01",
+          "text": "Toma sale cada mañana a las 07:14.",
+          "category": "memory"
+        }
+      ]
+    },
+    {
+      "id": "e-02",
+      "code": "E-02",
+      "title": "Registro civil",
+      "type": "document",
+      "source": "Instituto de Integridad Civil",
+      "claims": [
+        {
+          "id": "claim-record-single",
+          "evidenceId": "e-02",
+          "text": "Ena figura como soltera desde su nacimiento.",
+          "category": "record"
+        },
+        {
+          "id": "claim-record-erased-line",
+          "evidenceId": "e-02",
+          "text": "El documento conserva la presión de una línea eliminada.",
+          "category": "record",
+          "remnant": true
+        }
+      ]
+    },
+    {
+      "id": "e-03",
+      "code": "E-03",
+      "title": "Mesa de desayuno",
+      "type": "scene",
+      "source": "Casa de Ena",
+      "claims": [
+        {
+          "id": "claim-consequence-second-cup",
+          "evidenceId": "e-03",
+          "text": "Una segunda taza fue utilizada recientemente.",
+          "category": "consequence"
+        },
+        {
+          "id": "claim-memory-no-coffee",
+          "evidenceId": "e-03",
+          "text": "Ena no consume café.",
+          "category": "memory"
+        }
+      ]
+    },
+    {
+      "id": "e-04",
+      "code": "E-04",
+      "title": "Cámara de arrastre",
+      "type": "sequence",
+      "source": "Levantamiento de campo",
+      "claims": [
+        {
+          "id": "claim-record-empty-room",
+          "evidenceId": "e-04",
+          "text": "La habitación fue registrada vacía durante el paso del tren.",
+          "category": "record"
+        },
+        {
+          "id": "claim-consequence-missing-cup",
+          "evidenceId": "e-04",
+          "text": "La segunda taza desaparece durante el intervalo.",
+          "category": "consequence"
+        }
+      ]
+    },
+    {
+      "id": "e-05",
+      "code": "E-05",
+      "title": "Grabación magnética",
+      "type": "audio",
+      "source": "Cocina de Ena",
+      "claims": [
+        {
+          "id": "claim-consequence-pauses",
+          "evidenceId": "e-05",
+          "text": "Ena mantiene una conversación con pausas compatibles con respuestas.",
+          "category": "consequence"
+        },
+        {
+          "id": "claim-remnant-kiru",
+          "evidenceId": "e-05",
+          "text": "La cinta contiene la frase: “Kiru todavía no debe subir”.",
+          "category": "memory",
+          "remnant": true
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-biography-conflict",
+      "text": "La memoria afectiva de Ena y su biografía oficial describen continuidades incompatibles.",
+      "strength": "firm"
+    },
+    {
+      "id": "obs-second-resident",
+      "text": "La rutina doméstica contiene consecuencias atribuibles a una segunda persona.",
+      "strength": "firm"
+    },
+    {
+      "id": "obs-alternate-room",
+      "text": "Durante las 07:14, la cámara registró una versión distinta de la habitación.",
+      "strength": "firm"
+    },
+    {
+      "id": "obs-discordance",
+      "text": "La identidad de Toma fue eliminada del registro, pero permanece en memoria y consecuencia.",
+      "strength": "discordance"
+    }
+  ],
+  "contrastRules": [
+    {
+      "id": "contrast-01",
+      "requiredClaimIds": [
+        "claim-record-single",
+        "claim-memory-marriage"
+      ],
+      "relation": "contradicts",
+      "observationId": "obs-biography-conflict"
+    },
+    {
+      "id": "contrast-02",
+      "requiredClaimIds": [
+        "claim-consequence-second-cup",
+        "claim-memory-no-coffee"
+      ],
+      "relation": "leaves_trace",
+      "observationId": "obs-second-resident"
+    },
+    {
+      "id": "contrast-03",
+      "requiredClaimIds": [
+        "claim-record-empty-room",
+        "claim-consequence-missing-cup"
+      ],
+      "relation": "supports",
+      "observationId": "obs-alternate-room"
+    },
+    {
+      "id": "contrast-04",
+      "requiredClaimIds": [
+        "claim-record-erased-line",
+        "claim-memory-marriage",
+        "claim-consequence-second-cup"
+      ],
+      "relation": "contradicts",
+      "observationId": "obs-discordance"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "t1",
+      "text": "Ena prepara dos desayunos.",
+      "correctIndex": 0
+    },
+    {
+      "id": "t2",
+      "text": "La segunda silla se desplaza.",
+      "correctIndex": 1
+    },
+    {
+      "id": "t3",
+      "text": "Aparece una segunda sombra.",
+      "correctIndex": 2
+    },
+    {
+      "id": "t4",
+      "text": "Se escucha el tren.",
+      "correctIndex": 3
+    },
+    {
+      "id": "t5",
+      "text": "La habitación queda vacía.",
+      "correctIndex": 4
+    },
+    {
+      "id": "t6",
+      "text": "Ena reaparece sin la segunda taza.",
+      "correctIndex": 5
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hypothesis-dominant",
+      "title": "Continuidad ferroviaria descartada",
+      "description": "Toma perteneció a una continuidad ferroviaria descartada y permanece como huérfano causal.",
+      "status": "dominant",
+      "requiredObservationIds": [
+        "obs-biography-conflict",
+        "obs-second-resident",
+        "obs-alternate-room",
+        "obs-discordance"
+      ],
+      "slots": [
+        {
+          "id": "slot-record",
+          "category": "record",
+          "requiredClaimId": "claim-record-erased-line"
+        },
+        {
+          "id": "slot-memory",
+          "category": "memory",
+          "requiredClaimId": "claim-memory-marriage"
+        },
+        {
+          "id": "slot-consequence",
+          "category": "consequence",
+          "requiredClaimId": "claim-consequence-second-cup"
+        },
+        {
+          "id": "slot-anomaly",
+          "category": "anomaly",
+          "requiredClaimId": "claim-remnant-kiru"
+        }
+      ]
+    }
+  ],
+  "verdicts": [
+    {
+      "id": "verdict-close",
+      "title": "Cierre de concordancia",
+      "description": "Reconocer la continuidad vigente y retirar elementos que sostienen la identidad residual.",
+      "consequences": [
+        "Ena perderá progresivamente sus recuerdos de Toma.",
+        "La zona reducirá su fatiga.",
+        "El ferrocarril perderá un punto de fijación."
+      ],
+      "endingSceneId": "ending-close"
+    },
+    {
+      "id": "verdict-stabilize",
+      "title": "Estabilización residual",
+      "description": "Reconocer provisionalmente a Toma como identidad residual.",
+      "consequences": [
+        "Ena conservará su memoria.",
+        "La casa seguirá fatigada.",
+        "La continuidad ferroviaria ganará estabilidad."
+      ],
+      "endingSceneId": "ending-stabilize"
+    }
+  ],
+  "product": {
+    "universe": "Concordancia",
+    "title": "Concordancia: Estación 0",
+    "arc": "Estación 0"
+  }
+}
